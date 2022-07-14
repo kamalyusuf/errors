@@ -1,12 +1,11 @@
+import ExtendableError from "extendable-error";
 import { CustomErrorParam, ErrorProps, Location } from "../types";
 
-export abstract class CustomError extends Error {
+export abstract class CustomError extends ExtendableError {
   abstract status: number;
 
   protected constructor(message: string) {
     super(message);
-
-    Object.setPrototypeOf(this, CustomError.prototype);
   }
 
   parse(param: CustomErrorParam, location?: Location): ErrorProps[] {
