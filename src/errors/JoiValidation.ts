@@ -11,8 +11,6 @@ export class JoiValidationError extends CustomError {
     public location?: Location
   ) {
     super(msg(errors));
-
-    Object.setPrototypeOf(this, JoiValidationError.prototype);
   }
 
   serialize() {

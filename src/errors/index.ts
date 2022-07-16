@@ -7,3 +7,4 @@ export * from "./NotAuthorized";
 export * from "./NotFound";
 export * from "./RateLimit";
 export * from "./Validation";
+export * from "./UnprocessableEntityError";

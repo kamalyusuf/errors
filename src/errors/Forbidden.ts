@@ -6,8 +6,6 @@ export class ForbiddenError extends CustomError {
 
   constructor(public message: string = msgs[403]) {
     super(message);
-
-    Object.setPrototypeOf(this, ForbiddenError.prototype);
   }
 
   serialize() {

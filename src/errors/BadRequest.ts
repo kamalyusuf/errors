@@ -21,8 +21,6 @@ export class BadRequestError extends CustomError {
 
     this.params = params;
     this.location = location;
-
-    Object.setPrototypeOf(this, BadRequestError.prototype);
   }
 
   serialize() {

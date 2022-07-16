@@ -11,8 +11,6 @@ export class ValidationError extends CustomError {
     super(msg(params));
 
     this.params = params;
-
-    Object.setPrototypeOf(this, ValidationError.prototype);
   }
 
   serialize() {

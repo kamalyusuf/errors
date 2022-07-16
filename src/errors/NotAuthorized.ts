@@ -13,10 +13,6 @@ export class NotAuthorizedError extends CustomError {
     super(typeof t === "string" ? t : t.message);
 
     this.params = t;
-
-    Object.setPrototypeOf(this, NotAuthorizedError.prototype);
-
-    this.name = this.constructor.name;
   }
 
   serialize() {

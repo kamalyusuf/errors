@@ -6,8 +6,6 @@ export class InternalServerError extends CustomError {
 
   constructor(public message: string = msgs[500]) {
     super(message);
-
-    Object.setPrototypeOf(this, InternalServerError.prototype);
   }
 
   serialize() {
