@@ -1,8 +1,11 @@
 import ExtendableError from "extendable-error";
 import { CustomErrorParam, ErrorProps, Location } from "../types";
+import { ICustomError } from "../utils";
 
 export abstract class CustomError extends ExtendableError {
   abstract status: number;
+
+  abstract name: ICustomError;
 
   protected constructor(message: string) {
     super(message);

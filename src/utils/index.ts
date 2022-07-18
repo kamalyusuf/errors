@@ -2,13 +2,19 @@ import { ValidationErrorItem } from "joi";
 import { CustomErrorParam } from "../types";
 
 export const msg = (
-  param: ValidationErrorItem[] | CustomErrorParam
+  param: ValidationErrorItem[] | CustomErrorParam,
+  concat = true
 ): string => {
   if (typeof param === "string") return param;
 
   if (!Array.isArray(param)) return param.message;
 
-  return param.map((p) => (typeof p === "string" ? p : p.message)).join(", ");
+  if (concat)
+    return param.map((p) => (typeof p === "string" ? p : p.message)).join(", ");
+
+  const p = param[0];
+
+  return typeof p === "string" ? p : p.message;
 };
 
 export const msgs = {
@@ -22,3 +28,17 @@ export const msgs = {
 export const setGlobalMessage = (t: Partial<typeof msgs>) => {
   Object.assign(msgs, t);
 };
+
+export const ERRORS = [
+  "BadRequestError",
+  "ForbiddenError",
+  "InternalServerError",
+  "JoiValidationError",
+  "NotAuthorizedError",
+  "NotFoundError",
+  "RateLimitError",
+  "UnprocessableEntityError",
+  "CustomValidationError"
+] as const;
+
+export type ICustomError = typeof ERRORS[number];

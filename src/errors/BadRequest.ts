@@ -5,6 +5,8 @@ import { CustomError } from "./Custom";
 export class BadRequestError extends CustomError {
   status = 400;
 
+  readonly name = "BadRequestError";
+
   public path?: string;
 
   public location?: Location;

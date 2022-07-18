@@ -1,2 +1,3 @@
-export { setGlobalMessage } from "./utils";
+export * from "./utils";
 export * from "./errors";
+export * from "./types";

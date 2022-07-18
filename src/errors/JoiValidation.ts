@@ -6,6 +6,8 @@ import { msg } from "../utils";
 export class JoiValidationError extends CustomError {
   status = 422;
 
+  readonly name = "JoiValidationError";
+
   constructor(
     public errors: ValidationErrorItem[],
     public location?: Location

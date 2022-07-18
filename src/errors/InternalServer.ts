@@ -4,6 +4,8 @@ import { CustomError } from "./Custom";
 export class InternalServerError extends CustomError {
   status = 500;
 
+  readonly name = "InternalServerError";
+
   /**
    *
    * @default internal server error

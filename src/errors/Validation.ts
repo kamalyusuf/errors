@@ -5,6 +5,9 @@ import { msg } from "../utils";
 export class ValidationError extends CustomError {
   status = 422;
 
+  // why CustomValidationError? to avoid conflict with mongoose's ValidationError
+  readonly name = "CustomValidationError";
+
   public params: CustomErrorParam;
 
   constructor(params: ErrorProps | ErrorProps[]) {

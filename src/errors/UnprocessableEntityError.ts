@@ -4,6 +4,8 @@ import { CustomError } from "./Custom";
 export class UnprocessableEntityError extends CustomError {
   status = 422;
 
+  readonly name = "UnprocessableEntityError";
+
   public params?: ErrorProps;
 
   constructor(message: string);

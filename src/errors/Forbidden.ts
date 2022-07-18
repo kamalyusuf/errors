@@ -4,6 +4,8 @@ import { CustomError } from "./Custom";
 export class ForbiddenError extends CustomError {
   status = 403;
 
+  readonly name = "ForbiddenError";
+
   /**
    *
    * @default thou shalt not

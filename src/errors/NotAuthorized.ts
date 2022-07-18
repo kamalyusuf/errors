@@ -5,6 +5,8 @@ import { CustomError } from "./Custom";
 export class NotAuthorizedError extends CustomError {
   status = 401;
 
+  readonly name = "NotAuthorizedError";
+
   public params: CustomErrorParam;
 
   /**

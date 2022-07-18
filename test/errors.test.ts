@@ -92,7 +92,7 @@ describe("errors", () => {
       throw ve;
     }).toThrow(ValidationError);
 
-    expect(ve.name).toEqual("ValidationError");
+    expect(ve.name).toEqual("CustomValidationError");
     expect(ve.status).toEqual(422);
     expect(ve.message).toContain("invalid data");
   });
