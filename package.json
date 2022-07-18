@@ -1,6 +1,6 @@
 {
   "name": "@kamalyb/errors",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "errors",
   "publishConfig": {
     "access": "public"
