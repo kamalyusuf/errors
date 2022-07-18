@@ -4,6 +4,10 @@ import { CustomError } from "./Custom";
 export class RateLimitError extends CustomError {
   status = 429;
 
+  /**
+   *
+   * @default too many requests. please try again later
+   */
   constructor(public message: string = msgs[429]) {
     super(message);
 

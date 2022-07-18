@@ -7,6 +7,10 @@ export class NotAuthorizedError extends CustomError {
 
   public params: CustomErrorParam;
 
+  /**
+   *
+   * @default you shall not pass
+   */
   constructor(message?: string);
   constructor(props?: ErrorProps);
   constructor(t: string | ErrorProps = msgs[401]) {
