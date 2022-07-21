@@ -1,4 +1,4 @@
-import ExtendableError from "extendable-error";
+import { ExtendableError } from "extendable-error";
 import { CustomErrorParam, ErrorProps, Location } from "../types";
 import { ICustomError } from "../utils";
 
