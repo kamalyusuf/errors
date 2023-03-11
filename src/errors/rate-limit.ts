@@ -1,8 +1,8 @@
-import { msgs } from "../utils";
-import { CustomError } from "./Custom";
+import { messages } from "../utils";
+import { CustomError } from "./custom";
 
 export class RateLimitError extends CustomError {
-  status = 429;
+  readonly status = 429;
 
   readonly name = "RateLimitError";
 
@@ -10,7 +10,7 @@ export class RateLimitError extends CustomError {
    *
    * @default too many requests. please try again later
    */
-  constructor(public message: string = msgs[429]) {
+  constructor(public message: string = messages[429]) {
     super(message);
   }
 

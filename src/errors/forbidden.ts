@@ -1,8 +1,8 @@
-import { msgs } from "../utils";
-import { CustomError } from "./Custom";
+import { messages } from "../utils";
+import { CustomError } from "./custom";
 
 export class ForbiddenError extends CustomError {
-  status = 403;
+  readonly status = 403;
 
   readonly name = "ForbiddenError";
 
@@ -10,7 +10,7 @@ export class ForbiddenError extends CustomError {
    *
    * @default thou shalt not
    */
-  constructor(public message: string = msgs[403]) {
+  constructor(public message: string = messages[403]) {
     super(message);
   }
 

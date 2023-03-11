@@ -1,24 +1,22 @@
-import { CustomErrorParam, Location, ErrorProps } from "../types";
+import type { CustomErrorParam, ErrorLocation, ErrorProps } from "../types";
 import { msg } from "../utils";
-import { CustomError } from "./Custom";
+import { CustomError } from "./custom";
 
 export class BadRequestError extends CustomError {
-  status = 400;
+  readonly status = 400;
 
   readonly name = "BadRequestError";
 
-  public path?: string;
+  private readonly location?: ErrorLocation;
 
-  public location?: Location;
+  private readonly params: CustomErrorParam;
 
-  public params: CustomErrorParam;
-
-  constructor(message: string, location?: Location);
+  constructor(message: string, location?: ErrorLocation);
   constructor(messages: string[]);
   constructor(props: ErrorProps);
   constructor(props: ErrorProps[]);
   constructor(props: Array<string | ErrorProps>);
-  constructor(params: CustomErrorParam, location?: Location) {
+  constructor(params: CustomErrorParam, location?: ErrorLocation) {
     super(msg(params));
 
     this.params = params;

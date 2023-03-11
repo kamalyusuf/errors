@@ -1,16 +1,16 @@
-import { ValidationErrorItem } from "joi";
-import { CustomError } from "./Custom";
-import { Location } from "../types";
+import type { ValidationErrorItem } from "joi";
+import { CustomError } from "./custom";
+import type { ErrorLocation } from "../types";
 import { msg } from "../utils";
 
 export class JoiValidationError extends CustomError {
-  status = 422;
+  readonly status = 422;
 
   readonly name = "JoiValidationError";
 
   constructor(
     public errors: ValidationErrorItem[],
-    public location?: Location
+    public location?: ErrorLocation
   ) {
     super(msg(errors));
   }

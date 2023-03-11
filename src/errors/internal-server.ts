@@ -1,8 +1,8 @@
-import { msgs } from "../utils";
-import { CustomError } from "./Custom";
+import { messages } from "../utils";
+import { CustomError } from "./custom";
 
 export class InternalServerError extends CustomError {
-  status = 500;
+  readonly status = 500;
 
   readonly name = "InternalServerError";
 
@@ -10,7 +10,7 @@ export class InternalServerError extends CustomError {
    *
    * @default internal server error
    */
-  constructor(public message: string = msgs[500]) {
+  constructor(public message: string = messages[500]) {
     super(message);
   }
 

@@ -1,8 +1,8 @@
-import { CustomError } from "./Custom";
-import { msgs } from "../utils";
+import { CustomError } from "./custom";
+import { messages } from "../utils";
 
 export class NotFoundError extends CustomError {
-  status = 404;
+  readonly status = 404;
 
   readonly name = "NotFoundError";
 
@@ -10,7 +10,7 @@ export class NotFoundError extends CustomError {
    *
    * @default not found
    */
-  constructor(message: string = msgs[404]) {
+  constructor(message: string = messages[404]) {
     super(message);
   }
 

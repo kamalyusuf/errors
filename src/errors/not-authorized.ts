@@ -1,13 +1,13 @@
-import { CustomErrorParam, ErrorProps } from "../types";
-import { msgs } from "../utils";
-import { CustomError } from "./Custom";
+import type { CustomErrorParam, ErrorProps } from "../types";
+import { messages } from "../utils";
+import { CustomError } from "./custom";
 
 export class NotAuthorizedError extends CustomError {
-  status = 401;
+  readonly status = 401;
 
   readonly name = "NotAuthorizedError";
 
-  public params: CustomErrorParam;
+  private readonly params: CustomErrorParam;
 
   /**
    *
@@ -15,7 +15,7 @@ export class NotAuthorizedError extends CustomError {
    */
   constructor(message?: string);
   constructor(props?: ErrorProps);
-  constructor(t: string | ErrorProps = msgs[401]) {
+  constructor(t: string | ErrorProps = messages[401]) {
     super(typeof t === "string" ? t : t.message);
 
     this.params = t;

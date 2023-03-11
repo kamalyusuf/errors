@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
-import { msgs } from "../src/utils/index";
 import {
+  messages,
   BadRequestError,
   NotFoundError,
   NotAuthorizedError,
@@ -9,117 +9,130 @@ import {
   RateLimitError,
   ValidationError,
   JoiValidationError,
-  UnprocessableEntityError
+  UnprocessableEntityError,
+  ConflictError
 } from "../src";
 
 describe("errors", () => {
   it("throws BadRequestError", () => {
-    const bre = new BadRequestError("bad error");
+    const badrequest = new BadRequestError("bad error");
 
     expect(() => {
-      throw bre;
+      throw badrequest;
     }).toThrow(BadRequestError);
 
-    expect(bre.name).toEqual("BadRequestError");
-    expect(bre.status).toEqual(400);
-    expect(bre.message).toEqual("bad error");
+    expect(badrequest.name).toEqual("BadRequestError");
+    expect(badrequest.status).toEqual(400);
+    expect(badrequest.message).toEqual("bad error");
   });
 
   it("throws NotAuthorizedError", () => {
-    const nae = new NotAuthorizedError();
+    const notauthorized = new NotAuthorizedError();
 
     expect(() => {
-      throw nae;
+      throw notauthorized;
     }).toThrow(NotAuthorizedError);
 
-    expect(nae.name).toEqual("NotAuthorizedError");
-    expect(nae.status).toEqual(401);
-    expect(nae.message).toEqual(msgs[401]);
+    expect(notauthorized.name).toEqual("NotAuthorizedError");
+    expect(notauthorized.status).toEqual(401);
+    expect(notauthorized.message).toEqual(messages[401]);
   });
 
   it("throws ForbiddenError", () => {
-    const fe = new ForbiddenError();
+    const forbidden = new ForbiddenError();
 
     expect(() => {
-      throw fe;
+      throw forbidden;
     }).toThrow(ForbiddenError);
 
-    expect(fe.name).toEqual("ForbiddenError");
-    expect(fe.status).toEqual(403);
-    expect(fe.message).toEqual(msgs[403]);
+    expect(forbidden.name).toEqual("ForbiddenError");
+    expect(forbidden.status).toEqual(403);
+    expect(forbidden.message).toEqual(messages[403]);
   });
 
   it("throws InternalServerError", () => {
-    const ise = new InternalServerError();
+    const internalserver = new InternalServerError();
 
     expect(() => {
-      throw ise;
+      throw internalserver;
     }).toThrow(InternalServerError);
 
-    expect(ise.name).toEqual("InternalServerError");
-    expect(ise.status).toEqual(500);
-    expect(ise.message).toEqual(msgs[500]);
+    expect(internalserver.name).toEqual("InternalServerError");
+    expect(internalserver.status).toEqual(500);
+    expect(internalserver.message).toEqual(messages[500]);
   });
 
   it("throws NotFoundError", () => {
-    const nfe = new NotFoundError("not found");
+    const notfound = new NotFoundError("not found");
 
     expect(() => {
-      throw nfe;
+      throw notfound;
     }).toThrow(NotFoundError);
 
-    expect(nfe.name).toEqual("NotFoundError");
-    expect(nfe.status).toEqual(404);
-    expect(nfe.message).toEqual("not found");
+    expect(notfound.name).toEqual("NotFoundError");
+    expect(notfound.status).toEqual(404);
+    expect(notfound.message).toEqual("not found");
   });
 
   it("throws RateLimitError", () => {
-    const rle = new RateLimitError();
+    const ratelimit = new RateLimitError();
 
     expect(() => {
-      throw rle;
+      throw ratelimit;
     }).toThrow(RateLimitError);
 
-    expect(rle.name).toEqual("RateLimitError");
-    expect(rle.status).toEqual(429);
-    expect(rle.message).toEqual(msgs[429]);
+    expect(ratelimit.name).toEqual("RateLimitError");
+    expect(ratelimit.status).toEqual(429);
+    expect(ratelimit.message).toEqual(messages[429]);
   });
 
   it("throws ValidationError", () => {
-    const ve = new ValidationError({ message: "invalid data" });
+    const validation = new ValidationError({ message: "invalid data" });
 
     expect(() => {
-      throw ve;
+      throw validation;
     }).toThrow(ValidationError);
 
-    expect(ve.name).toEqual("CustomValidationError");
-    expect(ve.status).toEqual(422);
-    expect(ve.message).toContain("invalid data");
+    expect(validation.name).toEqual("CustomValidationError");
+    expect(validation.status).toEqual(422);
+    expect(validation.message).toContain("invalid data");
   });
 
   it("throws JoiValidationError", () => {
-    const jve = new JoiValidationError([
+    const joivalidation = new JoiValidationError([
       { message: "joi error", path: ["email"], type: "" }
     ]);
 
     expect(() => {
-      throw jve;
+      throw joivalidation;
     }).toThrow(JoiValidationError);
 
-    expect(jve.name).toEqual("JoiValidationError");
-    expect(jve.status).toEqual(422);
-    expect(jve.message).toContain("joi error");
+    expect(joivalidation.name).toEqual("JoiValidationError");
+    expect(joivalidation.status).toEqual(422);
+    expect(joivalidation.message).toContain("joi error");
   });
 
   it("throws UnprocessableEntityError", () => {
-    const upee = new UnprocessableEntityError("unprocessable");
+    const unprocessable = new UnprocessableEntityError("unprocessable");
 
     expect(() => {
-      throw upee;
+      throw unprocessable;
     }).toThrow(UnprocessableEntityError);
 
-    expect(upee.name).toEqual("UnprocessableEntityError");
-    expect(upee.status).toEqual(422);
-    expect(upee.message).toEqual("unprocessable");
+    expect(unprocessable.name).toEqual("UnprocessableEntityError");
+    expect(unprocessable.status).toEqual(422);
+    expect(unprocessable.message).toEqual("unprocessable");
+  });
+
+  it("throws ConflictError", () => {
+    const conflict = new ConflictError("conflict");
+
+    expect(() => {
+      throw conflict;
+    }).toThrow(ConflictError);
+
+    expect(conflict.name).toEqual("ConflictError");
+    expect(conflict.status).toEqual(409);
+    expect(conflict.message).toEqual("conflict");
   });
 });

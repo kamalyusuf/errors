@@ -1,10 +1,10 @@
-import { ValidationErrorItem } from "joi";
-import { CustomErrorParam } from "../types";
+import type { ValidationErrorItem } from "joi";
+import type { CustomErrorParam } from "../types";
 
 export const msg = (
   param: ValidationErrorItem[] | CustomErrorParam,
   concat = true
-): string => {
+) => {
   if (typeof param === "string") return param;
 
   if (!Array.isArray(param)) return param.message;
@@ -17,7 +17,7 @@ export const msg = (
   return typeof p === "string" ? p : p.message;
 };
 
-export const msgs = {
+export const messages = {
   403: "thou shalt not",
   500: "internal server error",
   401: "you shall not pass",
@@ -25,8 +25,8 @@ export const msgs = {
   429: "too many requests. please try again later"
 };
 
-export const setGlobalMessage = (t: Partial<typeof msgs>) => {
-  Object.assign(msgs, t);
+export const setdefaultmessage = (t: Partial<typeof messages>) => {
+  Object.assign(messages, t);
 };
 
 export const ERRORS = [
@@ -38,7 +38,8 @@ export const ERRORS = [
   "NotFoundError",
   "RateLimitError",
   "UnprocessableEntityError",
-  "CustomValidationError"
+  "CustomValidationError",
+  "ConflictError"
 ] as const;
 
-export type ICustomError = typeof ERRORS[number];
+export type ICustomError = (typeof ERRORS)[number];

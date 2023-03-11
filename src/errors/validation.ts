@@ -1,14 +1,13 @@
-import { CustomError } from "./Custom";
-import { ErrorProps, CustomErrorParam } from "../types";
+import { CustomError } from "./custom";
+import type { ErrorProps, CustomErrorParam } from "../types";
 import { msg } from "../utils";
 
 export class ValidationError extends CustomError {
-  status = 422;
+  readonly status = 422;
 
-  // why CustomValidationError? to avoid conflict with mongoose's ValidationError
   readonly name = "CustomValidationError";
 
-  public params: CustomErrorParam;
+  private readonly params: CustomErrorParam;
 
   constructor(params: ErrorProps | ErrorProps[]) {
     super(msg(params));
