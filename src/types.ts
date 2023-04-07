@@ -1,10 +1,7 @@
 export interface ErrorProps {
   message: string;
   path?: string;
-  location?: ErrorLocation;
 }
-
-export type ErrorLocation = "body" | "params" | "query";
 
 export type CustomErrorParam =
   | string

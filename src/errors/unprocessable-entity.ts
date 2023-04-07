@@ -1,6 +1,5 @@
-import type { ErrorProps, CustomErrorParam, ErrorLocation } from "../types";
+import type { ErrorProps, CustomErrorParam } from "../types";
 import { CustomError } from "./custom";
-
 import { msg } from "../utils";
 
 export class UnprocessableEntityError extends CustomError {
@@ -8,23 +7,18 @@ export class UnprocessableEntityError extends CustomError {
 
   readonly name = "UnprocessableEntityError";
 
-  private readonly params: CustomErrorParam;
+  private readonly param: CustomErrorParam;
 
-  private readonly location?: ErrorLocation;
-
-  constructor(message: string, location?: ErrorLocation);
-  constructor(messages: string[]);
+  constructor(message: string);
   constructor(props: ErrorProps);
-  constructor(props: ErrorProps[]);
   constructor(props: Array<string | ErrorProps>);
-  constructor(params: CustomErrorParam, location?: ErrorLocation) {
-    super(msg(params));
+  constructor(param: CustomErrorParam) {
+    super(msg(param));
 
-    this.params = params;
-    this.location = location;
+    this.param = param;
   }
 
   serialize() {
-    return this.parse(this.params, this.location);
+    return this.parse(this.param);
   }
 }

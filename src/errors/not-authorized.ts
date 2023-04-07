@@ -7,7 +7,7 @@ export class NotAuthorizedError extends CustomError {
 
   readonly name = "NotAuthorizedError";
 
-  private readonly params: CustomErrorParam;
+  private readonly param: CustomErrorParam;
 
   /**
    *
@@ -18,10 +18,10 @@ export class NotAuthorizedError extends CustomError {
   constructor(t: string | ErrorProps = messages[401]) {
     super(typeof t === "string" ? t : t.message);
 
-    this.params = t;
+    this.param = t;
   }
 
   serialize() {
-    return this.parse(this.params);
+    return this.parse(this.param);
   }
 }

@@ -1,14 +1,9 @@
 import { ExtendableError } from "extendable-error";
-import type {
-  CustomErrorParam,
-  ErrorProps,
-  ErrorLocation,
-  ErrorStatus
-} from "../types";
+import type { CustomErrorParam, ErrorProps, ErrorStatus } from "../types";
 import type { ICustomError } from "../utils";
 
 export abstract class CustomError extends ExtendableError {
-  abstract status: ErrorStatus;
+  abstract status: ErrorStatus | number;
 
   abstract name: ICustomError;
 
@@ -16,8 +11,8 @@ export abstract class CustomError extends ExtendableError {
     super(message);
   }
 
-  parse(param: CustomErrorParam, location?: ErrorLocation): ErrorProps[] {
-    if (typeof param === "string") return [{ message: param, location }];
+  parse(param: CustomErrorParam): ErrorProps[] {
+    if (typeof param === "string") return [{ message: param }];
 
     if (Array.isArray(param))
       return param.map((p) => {
@@ -29,8 +24,7 @@ export abstract class CustomError extends ExtendableError {
 
         return {
           message: p.message,
-          path: p.path,
-          location: p.location
+          path: p.path
         };
       });
 

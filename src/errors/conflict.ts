@@ -7,17 +7,17 @@ export class ConflictError extends CustomError {
 
   readonly name = "ConflictError";
 
-  private readonly params: CustomErrorParam;
+  private readonly param: CustomErrorParam;
 
   constructor(message: string);
   constructor(props: ErrorProps);
-  constructor(params: string | ErrorProps) {
-    super(msg(params));
+  constructor(param: string | ErrorProps) {
+    super(msg(param));
 
-    this.params = params;
+    this.param = param;
   }
 
   serialize() {
-    return this.parse(this.params);
+    return this.parse(this.param);
   }
 }

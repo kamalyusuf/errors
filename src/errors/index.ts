@@ -9,3 +9,4 @@ export * from "./rate-limit";
 export * from "./validation";
 export * from "./unprocessable-entity";
 export * from "./conflict";
+export * from "./some";

@@ -10,7 +10,8 @@ import {
   ValidationError,
   JoiValidationError,
   UnprocessableEntityError,
-  ConflictError
+  ConflictError,
+  SomeError
 } from "../src";
 
 describe("errors", () => {
@@ -134,5 +135,17 @@ describe("errors", () => {
     expect(conflict.name).toEqual("ConflictError");
     expect(conflict.status).toEqual(409);
     expect(conflict.message).toEqual("conflict");
+  });
+
+  it("throws SomeError", () => {
+    const some = new SomeError(412, "precondition");
+
+    expect(() => {
+      throw some;
+    }).toThrow(SomeError);
+
+    expect(some.name).toEqual("SomeError");
+    expect(some.status).toEqual(412);
+    expect(some.message).toEqual("precondition");
   });
 });

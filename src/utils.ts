@@ -1,5 +1,5 @@
 import type { ValidationErrorItem } from "joi";
-import type { CustomErrorParam } from "../types";
+import { CustomErrorParam } from "./types";
 
 export const msg = (
   param: ValidationErrorItem[] | CustomErrorParam,
@@ -39,7 +39,8 @@ export const ERRORS = [
   "RateLimitError",
   "UnprocessableEntityError",
   "CustomValidationError",
-  "ConflictError"
+  "ConflictError",
+  "SomeError"
 ] as const;
 
 export type ICustomError = (typeof ERRORS)[number];

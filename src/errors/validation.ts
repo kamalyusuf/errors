@@ -7,15 +7,15 @@ export class ValidationError extends CustomError {
 
   readonly name = "CustomValidationError";
 
-  private readonly params: CustomErrorParam;
+  private readonly param: CustomErrorParam;
 
-  constructor(params: ErrorProps | ErrorProps[]) {
-    super(msg(params));
+  constructor(param: ErrorProps | ErrorProps[]) {
+    super(msg(param));
 
-    this.params = params;
+    this.param = param;
   }
 
   serialize() {
-    return this.parse(this.params);
+    return this.parse(this.param);
   }
 }
