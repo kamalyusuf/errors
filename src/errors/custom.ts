@@ -16,16 +16,12 @@ export abstract class CustomError extends ExtendableError {
 
     if (Array.isArray(param))
       return param.map((p) => {
-        if (typeof p === "string") {
+        if (typeof p === "string")
           return {
             message: p
           };
-        }
 
-        return {
-          message: p.message,
-          path: p.path
-        };
+        return p;
       });
 
     return [param];

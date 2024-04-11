@@ -148,4 +148,18 @@ describe("errors", () => {
     expect(some.status).toEqual(412);
     expect(some.message).toEqual("precondition");
   });
+
+  it("allows arbitrary properties", () => {
+    const error = new NotAuthorizedError({
+      message: "email not verified",
+      email: "test@email.com"
+    });
+
+    expect(() => {
+      throw error;
+    }).toThrow(NotAuthorizedError);
+
+    expect(error.message).toEqual("email not verified");
+    expect(error.serialize().at(0)!.email).toEqual("test@email.com");
+  });
 });
