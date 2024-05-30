@@ -1,3 +1,3 @@
-export * from "./utils";
 export * from "./errors";
-export * from "./types";
+export { ERRORS, ICustomError, setmessages as messages } from "./utils";
+export { ErrorProps, ErrorStatus } from "./types";

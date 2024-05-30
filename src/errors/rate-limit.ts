@@ -6,10 +6,6 @@ export class RateLimitError extends CustomError {
 
   readonly name = "RateLimitError";
 
-  /**
-   *
-   * @default too many requests. please try again later
-   */
   constructor(public message: string = messages[429]) {
     super(message);
   }

@@ -6,10 +6,6 @@ export class InternalServerError extends CustomError {
 
   readonly name = "InternalServerError";
 
-  /**
-   *
-   * @default internal server error
-   */
   constructor(public message: string = messages[500]) {
     super(message);
   }

@@ -6,10 +6,6 @@ export class ForbiddenError extends CustomError {
 
   readonly name = "ForbiddenError";
 
-  /**
-   *
-   * @default thou shalt not
-   */
   constructor(public message: string = messages[403]) {
     super(message);
   }

@@ -9,10 +9,6 @@ export class NotAuthorizedError extends CustomError {
 
   private readonly param: CustomErrorParam;
 
-  /**
-   *
-   * @default you shall not pass
-   */
   constructor(message?: string);
   constructor(props?: ErrorProps);
   constructor(t: string | ErrorProps = messages[401]) {

@@ -6,10 +6,6 @@ export class NotFoundError extends CustomError {
 
   readonly name = "NotFoundError";
 
-  /**
-   *
-   * @default not found
-   */
   constructor(message: string = messages[404]) {
     super(message);
   }

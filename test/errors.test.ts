@@ -1,6 +1,6 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { describe, it, expect } from "vitest";
 import {
-  messages,
   BadRequestError,
   NotFoundError,
   NotAuthorizedError,
@@ -13,6 +13,7 @@ import {
   ConflictError,
   SomeError
 } from "../src";
+import { messages } from "../src/utils";
 
 describe("errors", () => {
   it("throws BadRequestError", () => {

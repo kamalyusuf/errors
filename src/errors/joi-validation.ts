@@ -14,7 +14,7 @@ export class JoiValidationError extends CustomError {
   serialize() {
     return this.errors.map((error) => ({
       message: error.message,
-      path: error.path[0]?.toString()
+      path: error.path.join(".")
     }));
   }
 }
