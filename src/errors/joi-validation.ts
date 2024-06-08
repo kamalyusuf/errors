@@ -1,6 +1,6 @@
 import type { ValidationErrorItem } from "joi";
-import { CustomError } from "./custom";
-import { msg } from "../utils";
+import { CustomError } from "./custom.js";
+import { msg } from "../utils.js";
 
 export class JoiValidationError extends CustomError {
   readonly status = 422;

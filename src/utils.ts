@@ -1,5 +1,5 @@
 import type { ValidationErrorItem } from "joi";
-import { CustomErrorParam } from "./types";
+import type { CustomErrorParam } from "./types.js";
 
 export const msg = (
   param: ValidationErrorItem[] | CustomErrorParam,
@@ -14,7 +14,7 @@ export const msg = (
 
   const p = param[0];
 
-  return typeof p === "string" ? p : p.message;
+  return typeof p === "string" ? p : p!.message;
 };
 
 export const messages = {

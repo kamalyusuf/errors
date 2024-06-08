@@ -1,6 +1,6 @@
-import { CustomError } from "./custom";
-import type { ErrorProps, CustomErrorParam } from "../types";
-import { msg } from "../utils";
+import { CustomError } from "./custom.js";
+import type { ErrorProps, CustomErrorParam } from "../types.js";
+import { msg } from "../utils.js";
 
 export class ConflictError extends CustomError {
   readonly status = 409;

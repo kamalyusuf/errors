@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { describe, it, expect } from "vitest";
 import {
   BadRequestError,
@@ -12,8 +11,8 @@ import {
   UnprocessableEntityError,
   ConflictError,
   SomeError
-} from "../src";
-import { messages } from "../src/utils";
+} from "../src/index.js";
+import { messages } from "../src/utils.js";
 
 describe("errors", () => {
   it("throws BadRequestError", () => {

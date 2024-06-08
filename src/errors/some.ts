@@ -1,6 +1,6 @@
-import { CustomErrorParam, ErrorProps } from "../types";
-import { msg } from "../utils";
-import { CustomError } from "./custom";
+import type { CustomErrorParam, ErrorProps } from "../types.js";
+import { msg } from "../utils.js";
+import { CustomError } from "./custom.js";
 
 export class SomeError extends CustomError {
   readonly status: number;

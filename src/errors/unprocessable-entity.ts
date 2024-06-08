@@ -1,6 +1,6 @@
-import type { ErrorProps, CustomErrorParam } from "../types";
-import { CustomError } from "./custom";
-import { msg } from "../utils";
+import type { ErrorProps, CustomErrorParam } from "../types.js";
+import { CustomError } from "./custom.js";
+import { msg } from "../utils.js";
 
 export class UnprocessableEntityError extends CustomError {
   readonly status = 422;

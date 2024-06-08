@@ -1,6 +1,6 @@
-import type { CustomErrorParam, ErrorProps } from "../types";
-import { messages } from "../utils";
-import { CustomError } from "./custom";
+import type { CustomErrorParam, ErrorProps } from "../types.js";
+import { messages } from "../utils.js";
+import { CustomError } from "./custom.js";
 
 export class NotAuthorizedError extends CustomError {
   readonly status = 401;

@@ -1,11 +1,11 @@
 import { ExtendableError } from "extendable-error";
-import type { CustomErrorParam, ErrorProps, ErrorStatus } from "../types";
-import type { ICustomError } from "../utils";
+import type { CustomErrorParam, ErrorProps, ErrorStatus } from "../types.js";
+import type { ICustomError } from "../utils.js";
 
 export abstract class CustomError extends ExtendableError {
   abstract status: ErrorStatus | number;
 
-  abstract name: ICustomError;
+  abstract override name: ICustomError;
 
   protected constructor(message: string) {
     super(message);
