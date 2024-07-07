@@ -16,7 +16,7 @@ import { messages } from "../src/utils.js";
 
 describe("errors", () => {
   it("throws BadRequestError", () => {
-    const badrequest = new BadRequestError("bad error");
+    const badrequest = new BadRequestError("bad error", "body");
 
     expect(() => {
       throw badrequest;
@@ -25,6 +25,7 @@ describe("errors", () => {
     expect(badrequest.name).toEqual("BadRequestError");
     expect(badrequest.status).toEqual(400);
     expect(badrequest.message).toEqual("bad error");
+    expect(badrequest.source).toEqual("body");
   });
 
   it("throws NotAuthorizedError", () => {
@@ -88,21 +89,29 @@ describe("errors", () => {
   });
 
   it("throws ValidationError", () => {
-    const validation = new ValidationError({ message: "invalid data" });
+    const validation = new ValidationError([
+      { message: "invalid data" },
+      { message: "error", path: "name", source: "body" }
+    ]);
 
     expect(() => {
       throw validation;
     }).toThrow(ValidationError);
 
+    const serialized = validation.serialize();
+
     expect(validation.name).toEqual("CustomValidationError");
     expect(validation.status).toEqual(422);
     expect(validation.message).toContain("invalid data");
+    expect(serialized.at(0)?.source).toBeUndefined();
+    expect(serialized.at(1)?.source).toBe("body");
   });
 
   it("throws JoiValidationError", () => {
-    const joivalidation = new JoiValidationError([
-      { message: "joi error", path: ["email"], type: "" }
-    ]);
+    const joivalidation = new JoiValidationError(
+      [{ message: "joi error", path: ["email"], type: "" }],
+      "params"
+    );
 
     expect(() => {
       throw joivalidation;
@@ -111,10 +120,14 @@ describe("errors", () => {
     expect(joivalidation.name).toEqual("JoiValidationError");
     expect(joivalidation.status).toEqual(422);
     expect(joivalidation.message).toContain("joi error");
+    expect(joivalidation.source).toEqual("params");
   });
 
   it("throws UnprocessableEntityError", () => {
-    const unprocessable = new UnprocessableEntityError("unprocessable");
+    const unprocessable = new UnprocessableEntityError(
+      "unprocessable",
+      "query"
+    );
 
     expect(() => {
       throw unprocessable;
@@ -123,6 +136,7 @@ describe("errors", () => {
     expect(unprocessable.name).toEqual("UnprocessableEntityError");
     expect(unprocessable.status).toEqual(422);
     expect(unprocessable.message).toEqual("unprocessable");
+    expect(unprocessable.source).toEqual("query");
   });
 
   it("throws ConflictError", () => {

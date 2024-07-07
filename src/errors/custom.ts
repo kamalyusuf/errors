@@ -1,5 +1,10 @@
 import { ExtendableError } from "extendable-error";
-import type { CustomErrorParam, ErrorProps, ErrorStatus } from "../types.js";
+import type {
+  CustomErrorParam,
+  ErrorProps,
+  ErrorSource,
+  ErrorStatus
+} from "../types.js";
 import type { ICustomError } from "../utils.js";
 
 export abstract class CustomError extends ExtendableError {
@@ -11,8 +16,8 @@ export abstract class CustomError extends ExtendableError {
     super(message);
   }
 
-  parse(param: CustomErrorParam): ErrorProps[] {
-    if (typeof param === "string") return [{ message: param }];
+  parse(param: CustomErrorParam, source?: ErrorSource): ErrorProps[] {
+    if (typeof param === "string") return [{ message: param, source }];
 
     if (Array.isArray(param))
       return param.map((p) => {

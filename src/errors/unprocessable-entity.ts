@@ -1,4 +1,4 @@
-import type { ErrorProps, CustomErrorParam } from "../types.js";
+import type { ErrorProps, CustomErrorParam, ErrorSource } from "../types.js";
 import { CustomError } from "./custom.js";
 import { msg } from "../utils.js";
 
@@ -9,16 +9,19 @@ export class UnprocessableEntityError extends CustomError {
 
   private readonly param: CustomErrorParam;
 
-  constructor(message: string);
+  public readonly source?: ErrorSource;
+
+  constructor(message: string, source?: ErrorSource);
   constructor(props: ErrorProps);
   constructor(props: Array<string | ErrorProps>);
-  constructor(param: CustomErrorParam) {
+  constructor(param: CustomErrorParam, source?: ErrorSource) {
     super(msg(param));
 
     this.param = param;
+    this.source = source;
   }
 
   serialize() {
-    return this.parse(this.param);
+    return this.parse(this.param, this.source);
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "@kamalyb/errors",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "errors",
   "type": "module",
   "publishConfig": {
@@ -14,7 +14,7 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "test": "vitest run",
+    "test": "vitest run --reporter=verbose",
     "prepublishOnly": "yarn run build"
   },
   "homepage": "https://github.com/kamalyusuf/errors",
