@@ -23,14 +23,14 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "joi": "^17.8.3",
     "prettier": "2.8.4",
     "tsup": "^8.3.5",
     "typescript": "^5.4.5",
     "vitest": "0.29.2"
   },
   "dependencies": {
-    "extendable-error": "^0.1.7",
-    "joi": "^17.8.3"
+    "extendable-error": "^0.1.7"
   },
   "engines": {
     "node": "^18 || >=20"
