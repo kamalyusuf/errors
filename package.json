@@ -14,7 +14,8 @@
   "scripts": {
     "build": "tsc --noEmit && tsup",
     "test": "vitest run --reporter=verbose",
-    "prepublishOnly": "yarn run build"
+    "prepublishOnly": "yarn run build",
+    "typecheck": "tsc --noEmit"
   },
   "homepage": "https://github.com/kamalyusuf/errors",
   "repository": {
@@ -23,17 +24,17 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "joi": "^17.8.3",
-    "prettier": "2.8.4",
+    "joi": "^18.0.1",
+    "prettier": "3.6.2",
     "tsup": "^8.3.5",
     "typescript": "^5.4.5",
-    "vitest": "0.29.2"
+    "vitest": "3.2.4"
   },
   "dependencies": {
     "extendable-error": "^0.1.7"
   },
   "engines": {
-    "node": "^18 || >=20"
+    "node": ">=22.12.0"
   },
   "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }

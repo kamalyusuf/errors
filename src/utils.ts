@@ -25,7 +25,7 @@ export const messages = {
   429: "too many requests. please try again later"
 };
 
-export const setmessages = (t: Partial<typeof messages>) => {
+export const set_messages = (t: Partial<typeof messages>) => {
   Object.assign(messages, t);
 };
 

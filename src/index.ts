@@ -10,5 +10,9 @@ export { RateLimitError } from "./errors/rate-limit.js";
 export { SomeError } from "./errors/some.js";
 export { UnprocessableEntityError } from "./errors/unprocessable-entity.js";
 export { ValidationError } from "./errors/validation.js";
-export { ERRORS, type ICustomError, setmessages as messages } from "./utils.js";
+export {
+  ERRORS,
+  type ICustomError,
+  set_messages as messages
+} from "./utils.js";
 export type { ErrorProps, ErrorStatus, ErrorSource } from "./types.js";

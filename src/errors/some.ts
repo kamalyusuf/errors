@@ -1,4 +1,4 @@
-import type { CustomErrorParam, ErrorProps } from "../types.js";
+import type { CustomErrorParam } from "../types.js";
 import { msg } from "../utils.js";
 import { CustomError } from "./custom.js";
 
@@ -9,9 +9,6 @@ export class SomeError extends CustomError {
 
   private readonly param: CustomErrorParam;
 
-  constructor(status: number, message: string);
-  constructor(status: number, props: ErrorProps);
-  constructor(status: number, props: Array<string | ErrorProps>);
   constructor(status: number, param: CustomErrorParam) {
     super(msg(param));
 
