@@ -1,7 +1,7 @@
 import type { ValidationErrorItem } from "joi";
 import { CustomError } from "./custom.js";
 import { msg } from "../utils.js";
-import type { ErrorSource } from "../types.js";
+import type { ErrorProps, ErrorSource } from "../types.js";
 
 export class JoiValidationError extends CustomError {
   readonly status = 422;
@@ -15,7 +15,7 @@ export class JoiValidationError extends CustomError {
     super(msg(errors));
   }
 
-  serialize() {
+  serialize(): ErrorProps[] {
     return this.errors.map((error) => ({
       message: error.message,
       path: error.path.join("."),
